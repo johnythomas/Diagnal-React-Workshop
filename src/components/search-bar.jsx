@@ -1,14 +1,6 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 
-function SearchBar({ searchKey }) {
-  const [query, setQuery] = useState(searchKey);
-
-  const handleChange = (e) => {
-    const { target: { value } } = e;
-    setQuery(value);
-  };
-
+function SearchBar({ query, onChange }) {
   return (
     <div className="flex items-center fixed top-0 h-48 w-full bg-[url('../public/Slices/nav_bar.png')] bg-cover px-[30px]">
       <div className="flex align-middle">
@@ -23,7 +15,7 @@ function SearchBar({ searchKey }) {
           type="text"
           className="w-full bg-transparent focus:outline-none font-body text-xl"
           value={query}
-          onChange={handleChange}
+          onChange={onChange}
         />
       </span>
       <div className="flex align-middle">
@@ -38,7 +30,8 @@ function SearchBar({ searchKey }) {
 }
 
 SearchBar.propTypes = {
-  searchKey: PropTypes.string.isRequired,
+  query: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
