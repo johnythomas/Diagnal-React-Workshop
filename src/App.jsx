@@ -1,10 +1,13 @@
 import './App.css';
+import MovieList from './components/movie-list';
+import SearchBar from './components/search-bar';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className="bg-black">
+      <SearchBar searchKey="Search key" />
+      <MovieList />
+    </div>
   );
 }
 
