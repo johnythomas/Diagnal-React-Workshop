@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import useMovies from '../hooks/use-movies';
 import MovieCard from './movie-card';
 
-function MovieList({
-  movies, hasNextPage, fetchNextPage,
-}) {
+function MovieList() {
+  const { hasNextPage, fetchNextPage, filteredMovies: movies } = useMovies();
   return (
     <InfiniteScroll
       dataLength={movies.length}
@@ -22,16 +21,10 @@ function MovieList({
           )}
         </div>
       ) : (
-        <div className="self-center text-white flex justify-center font-body font-light w-full">No Movies Present</div>
+        <div className="items-center text-white flex justify-center font-body font-light w-full h-screen">No Movies Present</div>
       )}
     </InfiniteScroll>
   );
 }
-
-MovieList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired,
-  hasNextPage: PropTypes.bool.isRequired,
-  fetchNextPage: PropTypes.func.isRequired,
-};
 
 export default MovieList;

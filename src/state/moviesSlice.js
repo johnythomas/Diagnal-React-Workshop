@@ -18,10 +18,10 @@ export const movieSlice = createSlice({
     nextPageNumber: 1,
     totalItems: null,
   },
+  query: '',
   reducers: {
-    // can include the search here
-    increment: () => {
-
+    updateQuery: (state, action) => {
+      state.query = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -41,12 +41,13 @@ export const movieSlice = createSlice({
 const selectMovies = (state) => state.movies.data;
 const selectTotalItems = (state) => state.movies.totalItems;
 const selectIsFetching = (state) => state.movies.isLoading;
+const selectQuery = (state) => state.movies.query;
 
 const selectFilteredMovies = createSelector(
-  [selectMovies, (_, query) => query],
-  (movies, query) => movies.filter(
-    ({ name }) => (name.toLowerCase().includes(query?.toLowerCase())),
-  ),
+  [selectMovies, selectQuery],
+  (movies, query) => (!query ? movies : movies.filter(
+    ({ name }) => name.toLowerCase().includes(query?.toLowerCase()),
+  )),
 );
 
 const selectHasNextPage = createSelector(
@@ -54,10 +55,10 @@ const selectHasNextPage = createSelector(
   (movies, totalItems) => totalItems === null || totalItems > movies.length,
 );
 
-export const { increment, decrement, incrementByAmount } = movieSlice.actions;
+export const { updateQuery } = movieSlice.actions;
 
 export {
-  selectMovies, selectFilteredMovies, selectHasNextPage, selectIsFetching,
+  selectMovies, selectFilteredMovies, selectHasNextPage, selectIsFetching, selectQuery,
 };
 
 export default movieSlice.reducer;

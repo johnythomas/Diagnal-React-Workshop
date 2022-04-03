@@ -1,29 +1,17 @@
 import './App.css';
+import { Provider } from 'react-redux';
 import MovieList from './components/movie-list';
 import SearchBar from './components/search-bar';
-import useFilter from './hooks/use-filter';
-import useMovies from './hooks/use-movies';
+import store from './state/store';
 
 function App() {
-  // TODO: Move this to redux
-  const { hasNextPage, fetchNextPage, isFetching } = useMovies();
-  // TODO: Use a selector to do the filtering
-  const {
-    query,
-    filteredMovies,
-    onFilterChange,
-  } = useFilter();
-
   return (
-    <div className="bg-black">
-      <SearchBar query={query} onChange={onFilterChange} />
-      <MovieList
-        isFetching={isFetching}
-        movies={filteredMovies}
-        hasNextPage={hasNextPage}
-        fetchNextPage={fetchNextPage}
-      />
-    </div>
+    <Provider store={store}>
+      <div className="bg-black min-h-screen">
+        <SearchBar />
+        <MovieList />
+      </div>
+    </Provider>
   );
 }
 

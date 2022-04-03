@@ -1,16 +1,18 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectFilteredMovies } from '../state/moviesSlice';
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectQuery, updateQuery } from '../state/moviesSlice';
 
 const useFilter = () => {
-  const [query, setQuery] = useState('');
+  const query = useSelector((state) => selectQuery(state));
+  const dispatch = useDispatch();
 
-  const filteredMovies = useSelector((state) => selectFilteredMovies(state, query));
+  const onFilterChange = useCallback((_query) => {
+    dispatch(updateQuery(_query));
+  }, [dispatch]);
 
   return {
     query,
-    filteredMovies,
-    onFilterChange: setQuery,
+    onFilterChange,
   };
 };
 
