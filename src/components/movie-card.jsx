@@ -1,22 +1,13 @@
 import PropTypes from 'prop-types';
-import { useCallback, useState } from 'react';
-
-const IMG_FALLBACK = 'placeholder_for_missing_posters.png';
+import Image from './image';
 
 function MovieCard({ title, thumbnail }) {
-  const [src, setSrc] = useState(thumbnail);
-
-  const onError = useCallback(() => {
-    setSrc(IMG_FALLBACK);
-  }, []);
-
   return (
     <figure>
-      <img
+      <Image
         className="w-full aspect-auto"
-        src={`${process.env.PUBLIC_URL}/Slices/${src}`}
+        src={thumbnail}
         alt={title}
-        onError={onError}
       />
       <figcaption
         className="mt-4 truncate text-white text-sm md:text-lg font-light font-body"
