@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/diagnal-react-workshop/static/css/main.05367dc7.css",
-    "main.js": "/diagnal-react-workshop/static/js/main.6b6fcdd7.js",
+    "main.css": "/diagnal-react-workshop/static/css/main.66812372.css",
+    "main.js": "/diagnal-react-workshop/static/js/main.97e1039b.js",
     "static/js/787.e03805db.chunk.js": "/diagnal-react-workshop/static/js/787.e03805db.chunk.js",
     "index.html": "/diagnal-react-workshop/index.html",
-    "main.05367dc7.css.map": "/diagnal-react-workshop/static/css/main.05367dc7.css.map",
-    "main.6b6fcdd7.js.map": "/diagnal-react-workshop/static/js/main.6b6fcdd7.js.map",
+    "main.66812372.css.map": "/diagnal-react-workshop/static/css/main.66812372.css.map",
+    "main.97e1039b.js.map": "/diagnal-react-workshop/static/js/main.97e1039b.js.map",
     "787.e03805db.chunk.js.map": "/diagnal-react-workshop/static/js/787.e03805db.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.05367dc7.css",
-    "static/js/main.6b6fcdd7.js"
+    "static/css/main.66812372.css",
+    "static/js/main.97e1039b.js"
   ]
 }
