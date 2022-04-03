@@ -6,18 +6,23 @@ import useMovies from './hooks/use-movies';
 
 function App() {
   // TODO: Move this to redux
-  const { movies, hasNextPage, fetchNextPage } = useMovies();
+  const { hasNextPage, fetchNextPage, isFetching } = useMovies();
   // TODO: Use a selector to do the filtering
   const {
     query,
     filteredMovies,
     onFilterChange,
-  } = useFilter({ movies });
+  } = useFilter();
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-black">
       <SearchBar query={query} onChange={onFilterChange} />
-      <MovieList movies={filteredMovies} hasNextPage={hasNextPage} fetchNextPage={fetchNextPage} />
+      <MovieList
+        isFetching={isFetching}
+        movies={filteredMovies}
+        hasNextPage={hasNextPage}
+        fetchNextPage={fetchNextPage}
+      />
     </div>
   );
 }

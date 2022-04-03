@@ -1,47 +1,28 @@
 import {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect,
 } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMoviesByPage, selectHasNextPage, selectIsFetching } from '../state/moviesSlice';
 
 const useMovies = () => {
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(true);
+  const dispatch = useDispatch();
+  const hasNextPage = useSelector((state) => selectHasNextPage(state));
+  const isFetching = useSelector((state) => selectIsFetching(state));
 
-  const getData = useCallback(async (_page) => {
+  const getData = useCallback(async () => {
     if (!hasNextPage) return;
-    const res = await fetch(
-      `CONTENTLISTINGPAGE-PAGE${_page}.json`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      },
-    );
-    const json = await res.json();
-    setData((_data) => [..._data, json]);
-    setHasNextPage(
-      (data.length ? data[0] : json)?.page['total-content-items'] > _page * 20,
-    );
-  }, [data, hasNextPage]);
+    dispatch(fetchMoviesByPage());
+  }, [dispatch, hasNextPage]);
 
   useEffect(() => {
-    getData(page);
-  }, [page]);
-
-  const fetchNextPage = useCallback(() => {
-    setPage((p) => p + 1);
+    getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const movies = useMemo(
-    () => data.map((d) => d.page['content-items'].content).flat(),
-    [data],
-  );
-
   return {
-    movies,
     hasNextPage,
-    fetchNextPage,
+    isFetching,
+    fetchNextPage: getData,
   };
 };
 

@@ -1,22 +1,16 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectFilteredMovies } from '../state/moviesSlice';
 
-const useFilter = ({ movies }) => {
+const useFilter = () => {
   const [query, setQuery] = useState('');
 
-  const onFilterChange = (e) => {
-    const { target: { value } } = e;
-    setQuery(value);
-  };
-
-  const filteredMovies = useMemo(
-    () => movies.filter((movie) => movie.name.toLowerCase().includes(query)),
-    [movies, query],
-  );
+  const filteredMovies = useSelector((state) => selectFilteredMovies(state, query));
 
   return {
     query,
     filteredMovies,
-    onFilterChange,
+    onFilterChange: setQuery,
   };
 };
 

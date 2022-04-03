@@ -19,7 +19,7 @@ function MovieCard({ title, thumbnail }) {
         onError={onError}
       />
       <figcaption
-        className="mt-6 truncate text-white text-sm md:text-lg font-light font-body"
+        className="mt-4 truncate text-white text-sm md:text-lg font-light font-body"
       >
         {title}
       </figcaption>
