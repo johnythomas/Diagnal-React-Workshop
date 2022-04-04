@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, memo } from 'react';
 
 const IMG_FALLBACK = 'placeholder_for_missing_posters.png';
 
@@ -26,4 +26,4 @@ Image.propTypes = {
   alt: PropTypes.string.isRequired,
 };
 
-export default Image;
+export default memo(Image);

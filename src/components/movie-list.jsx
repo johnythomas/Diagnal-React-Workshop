@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useMovies from '../hooks/use-movies';
 import MovieCard from './movie-card';
@@ -27,4 +28,4 @@ function MovieList() {
   );
 }
 
-export default MovieList;
+export default memo(MovieList);

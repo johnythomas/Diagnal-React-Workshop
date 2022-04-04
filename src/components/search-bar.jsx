@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { memo, useRef } from 'react';
 import useFilter from '../hooks/use-filter';
 import Image from './image';
 
@@ -51,4 +51,4 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+export default memo(SearchBar);

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 import Image from './image';
 
 function MovieCard({ title, thumbnail }) {
@@ -27,4 +28,4 @@ MovieCard.defaultProps = {
   thumbnail: '',
 };
 
-export default MovieCard;
+export default memo(MovieCard);
