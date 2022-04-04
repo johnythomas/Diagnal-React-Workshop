@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import useFilter from '../hooks/use-filter';
+import Image from './image';
 
 function SearchBar() {
   const {
@@ -40,9 +41,9 @@ function SearchBar() {
         />
       </span>
       <div role="button" tabIndex={0} className="flex align-middle" onKeyDown={handleClick} onClick={handleClick}>
-        <img
+        <Image
           className="w-6 h-5"
-          src={`${process.env.PUBLIC_URL}/Slices/search.png`}
+          src="search.png"
           alt="search-icon"
         />
       </div>

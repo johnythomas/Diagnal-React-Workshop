@@ -3,7 +3,7 @@ import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit'
 import fetchMovies from '../api';
 
 export const fetchMoviesByPage = createAsyncThunk(
-  'movies/fetMovies',
+  'movies/fetchMovies',
   (_, { getState }) => {
     const { movies: { nextPageNumber } } = getState();
     return fetchMovies(nextPageNumber);
@@ -27,7 +27,7 @@ export const movieSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchMoviesByPage.pending, (state) => {
-        state.status = true;
+        state.isLoading = true;
       })
       .addCase(fetchMoviesByPage.fulfilled, (state, action) => {
         const { payload: { movies, totalItems } } = action;
