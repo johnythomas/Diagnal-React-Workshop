@@ -17,8 +17,8 @@ export const movieSlice = createSlice({
     data: [],
     nextPageNumber: 1,
     totalItems: null,
+    query: '',
   },
-  query: '',
   reducers: {
     updateQuery: (state, action) => {
       state.query = action.payload;
@@ -45,9 +45,9 @@ const selectQuery = (state) => state.movies.query;
 
 const selectFilteredMovies = createSelector(
   [selectMovies, selectQuery],
-  (movies, query) => (!query ? movies : movies.filter(
-    ({ name }) => name.toLowerCase().includes(query?.toLowerCase()),
-  )),
+  (movies, query) => movies.filter(
+    ({ name }) => name.toLowerCase().includes(query.toLowerCase()),
+  ),
 );
 
 const selectHasNextPage = createSelector(
