@@ -10,7 +10,7 @@ function MovieCard({ title, thumbnail }) {
         alt={title}
       />
       <figcaption
-        className="mt-4 truncate text-white text-sm md:text-lg font-light font-body"
+        className="mt-4 truncate text-white text-sm md:text-lg xl:text-xl 2xl:text-2xl font-light font-body"
       >
         {title}
       </figcaption>

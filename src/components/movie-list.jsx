@@ -11,7 +11,7 @@ function MovieList() {
       hasMore={hasNextPage}
     >
       {movies.length ? (
-        <div className="px-3 grid grid-cols-3 gap-x-4 gap-y-6 pt-28">
+        <div className="px-3 md:px-6 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-x-4 md:gap-x-6 lg:gap-x-7 xl:gap-x-8 gap-y-6 pt-28 lg:pt-32">
           {movies.map(
             ({ name, posterImage, id }) => (
               <div className="snap-end" key={id}>

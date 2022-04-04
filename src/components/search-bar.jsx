@@ -22,7 +22,7 @@ function SearchBar() {
   };
 
   return (
-    <div className="flex items-center fixed top-0 h-28 w-full bg-[url('../public/Slices/nav_bar.png')] bg-cover px-3">
+    <div className="flex items-center fixed top-0 h-28 md:h-32 w-full bg-[url('../public/Slices/nav_bar.png')] bg-cover bg-repeat-x px-3">
       <div className="flex align-middle" role="button" tabIndex={0} onKeyDown={handleBackBtnClick} onClick={handleBackBtnClick}>
         <img
           className="w-6 h-5"
